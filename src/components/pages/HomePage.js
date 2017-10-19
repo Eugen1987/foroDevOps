@@ -1,21 +1,29 @@
 import React from 'react';
-import {Tab} from 'semantic-ui-react';
+import 'antd/dist/antd.css';
+import { Layout, Rate } from 'antd';
+import Maintable from '../tables/MainTable';
+import MainMenu from '../menus/MainMenu';
+import SideRightMenu from '../menus/SideRightMenu';
 
-const panes = [
-  { menuItem: 'Tab 1', render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
-  { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-  { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-]
-
+const { Header, Footer, Sider, Content } = Layout;
 const HomePage = () => (
-<div>
-<div>
-<p>mi contenido</p>
-</div>
-  <Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes} />
-</div>
-)
-
-
+  <Layout style={{ height: '100vh' }}>
+    <Header>
+      <MainMenu />
+      <hr color="orange" />
+    </Header>
+    <Layout>
+      <Content>
+        <Maintable />
+      </Content>
+      <Sider width="300" style={{ color: 'red' }}>
+        <SideRightMenu />
+      </Sider>
+    </Layout>
+    <Footer>
+      <Rate disabled defaultValue={2} />
+    </Footer>
+  </Layout>
+);
 
 export default HomePage;
